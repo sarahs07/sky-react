@@ -1,10 +1,14 @@
 import { ADD_ITEM } from './constants';
+import { REMOVE_ITEM } from './constants';
+import { TOGGLE_ITEM_STATUS } from './constants';
+import { SET_LIST_FILTER } from './constants';
+import { FILTERS } from './constants';
 
 export const initialState = {
   items: [
-    { id: 1, content: 'Call mum' },
-    { id: 2, content: 'Buy cat food' },
-    { id: 3, content: 'Water the plants' },
+    { id: 1, content: 'Call mum', completed: true },
+    { id: 2, content: 'Buy cat food', completed: false },
+    { id: 3, content: 'Water the plants', completed: true },
   ],
 };
 
@@ -21,8 +25,25 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items, newItem],
-      };
-    default:
+      }
+
+    case TOGGLE_ITEM_STATUS:
+      state.items.filter(item => item.id === action.id)
+      .map(matchedItem => matchedItem.completed = !matchedItem.completed);
+      return {
+        ...state,
+        items: [...state.items]
+      }
+
+    case REMOVE_ITEM:
+       state.items.filter(item => item.id === action.id)
+      .map((matchedItem, index) => state.items.splice(index, 1));
+      return {
+        ...state,
+        items: [...state.items]
+      }
+
+     default:
       return state;
   }
 };

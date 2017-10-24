@@ -5,3 +5,9 @@
 .itemsList-ul li {
   padding: 5px;
 }
+
+.background-grey{
+  background-color: lightgrey;
+  color: grey;
+}
+  
