@@ -28,6 +28,8 @@ const reducer = (state = initialState, action) => {
       }
 
     case TOGGLE_ITEM_STATUS:
+//TODO: update and return newState
+      let newState = [];
       state.items.filter(item => item.id === action.id)
       .map(matchedItem => matchedItem.completed = !matchedItem.completed);
       return {
