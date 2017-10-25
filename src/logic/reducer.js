@@ -35,7 +35,16 @@ const reducer = (state = initialState, action) => {
         items: [...state.items]
       }
 
-    case REMOVE_ITEM:
+      case REMOVE_ITEM:
+// TODO: test and replace with below
+//  const newState = state.items.filter(item => {
+//    return item.id !== action.id
+//  }
+
+//  return {
+//    ...state,
+//    items: [...newstate.items]
+//  }  
        state.items.filter(item => item.id === action.id)
       .map((matchedItem, index) => state.items.splice(index, 1));
       return {
