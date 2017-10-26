@@ -9,4 +9,4 @@ My previous experience with React state management is using the Flux architectur
 
 Time allowing I would have liked to add the a reducer for implementing the state to keep the filter option and also update the todo items state as per the selection.
 I would have also looked into fixing the last two unit tests as to why the calls to the click handler functions are getting recorded 
-and coming as 0 and not as expect i.e.1 
+and coming as 0 and not as expect i.e.1 and more unit tests for reducer and new actions creator methods.
