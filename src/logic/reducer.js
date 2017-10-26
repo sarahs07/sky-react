@@ -27,22 +27,21 @@ const reducer = (state = initialState, action) => {
         items: [...state.items, newItem],
       }
 
-    case TOGGLE_ITEM_STATUS:
-      state.items.filter(item => item.id === action.id)
-      .map(matchedItem => matchedItem.completed = !matchedItem.completed);
-      return {
-        ...state,
-        items: [...state.items]
-      }
-
-    case REMOVE_ITEM:
-       state.items.filter(item => item.id === action.id)
-      .map((matchedItem, index) => state.items.splice(index, 1));
-      return {
-        ...state,
-        items: [...state.items]
-      }
-
+    case TOGGLE_ITEM_STATUS: {
+     let newState = { items: []};
+     newState.items = state.items.map(item => {
+        if(item.id === action.id) {
+          item.completed = !item.completed
+        }
+        return item;
+      });
+      return { items: [...newState.items] }
+    }
+    case REMOVE_ITEM: {
+      let newState = { items: []};
+       newState.items = state.items.filter(item => { return item.id !== action.id });
+      return { items: [...newState.items] }
+    }
      default:
       return state;
   }
